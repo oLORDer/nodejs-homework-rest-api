@@ -1,5 +1,5 @@
 const contacts = require('../../models/contacts');
-const RequestError = require('../../helpers');
+const { RequestError } = require('../../helpers');
 
 const revome = async (req, res) => {
   const { contactId } = req.params;
@@ -10,7 +10,7 @@ const revome = async (req, res) => {
 
   // res.status(204).send();
   res.json({
-    message: 'Delete success',
+    message: 'contact deleted',
   });
 };
 

@@ -36,14 +36,18 @@ const addContact = async ({ name, email, phone }) => {
 };
 
 const updateContact = async (contactId, body) => {
-  const contacts = await listContacts();
-  const index = contacts.findIndex((el) => el.id === contactId);
-  if (index === -1) {
-    return null;
+  try {
+    const contacts = await listContacts();
+    const index = contacts.findIndex((el) => el.id === contactId);
+    if (index === -1) {
+      return null;
+    }
+    contacts[index] = { id: contactId, ...body };
+    await fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));
+    return contacts[index];
+  } catch (error) {
+    console.log(error.message);
   }
-  contacts[index] = { id: contactId, ...body };
-  await fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));
-  return contacts[index];
 };
 
 const removeContact = async (contactId) => {

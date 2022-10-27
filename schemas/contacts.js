@@ -4,7 +4,7 @@ const message = {
   'string.base': `"a" should be a type of 'text'`,
   'string.empty': `missing required name field`,
   'string.min': `"a" should have a minimum length of {#limit}`,
-  'any.required': `"a" is a required field`,
+  'any.required': `missing fields`,
 };
 
 const addSchema = Joi.object({
