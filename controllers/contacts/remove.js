@@ -1,9 +1,9 @@
-const contacts = require('../../models/contacts');
+const { contact } = require('../../models/contacts');
 const { RequestError } = require('../../helpers');
 
 const revome = async (req, res) => {
   const { contactId } = req.params;
-  const result = await contacts.removeContact(contactId);
+  const result = await contact.removeContact(contactId);
   if (!result) {
     throw RequestError(404);
   }
