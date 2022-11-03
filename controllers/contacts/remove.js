@@ -1,17 +1,17 @@
-const { contact } = require('../../models/contacts');
+const { contact } = require('../../models/contact');
 const { RequestError } = require('../../helpers');
 
-const revome = async (req, res) => {
+const remove = async (req, res) => {
   const { contactId } = req.params;
-  const result = await contact.removeContact(contactId);
+  const result = await contact.findByIdAndRemove(contactId);
   if (!result) {
     throw RequestError(404);
   }
 
   // res.status(204).send();
   res.json({
-    message: 'contact deleted',
+    message: 'delete success',
   });
 };
 
-module.exports = revome;
+module.exports = remove;

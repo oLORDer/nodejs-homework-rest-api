@@ -36,8 +36,13 @@ const addSchema = Joi.object({
   favorite: Joi.boolean().messages(message),
 });
 
+const updateFavoriteSchema = Joi.object({
+  favorite: Joi.boolean().required().messages(message),
+});
+
 const schemas = {
   addSchema,
+  updateFavoriteSchema,
 };
 
 const contact = model('contact', contactSchema);
